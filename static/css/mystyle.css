@@ -1,0 +1,526 @@
+body{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding-top: 70px;
+    background-color: rgba(192, 192, 192, 0.493);
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+}
+
+.dropdown-item{
+    display: inline;
+}
+
+.item{
+    width: 150px
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+    width: 800px;
+    float: left;
+}
+
+.image{
+    height: 250px;
+    width: 180px;
+    margin: 5px;
+}
+
+.show_image{
+    position: relative;
+    width: 60%;
+    float: left;
+    margin-top: 1%;
+}
+
+
+.show_details{
+    position: fixed;
+    width: 19%;
+    left: 60%;
+    height: 100%;
+    background-color: #212529;
+    visibility: hidden;
+    
+}
+
+.advance_search{
+    position: fixed;
+    width: 19%;
+    margin-left: 2%;
+    right: 0%;
+    height:100%;
+    background-color: #212529;
+
+}
+
+.book_info{
+    color: white;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.info{
+    color: white;
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 2%;
+}
+
+.a_search:hover{
+    border-style: solid;
+    color: rgba(176, 211, 231, 0.822);
+}
+
+.a_search {
+    display: block;
+    text-align: left;
+    font-size: large;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 10%;
+    margin-left: 2%;
+}
+
+#author_search{
+    visibility: visible;
+}
+
+.image:hover{
+    border-style: solid;
+    color: #212529;
+}
+
+#year_search{
+    visibility: visible;
+}
+
+#isbn_search{
+    visibility: visible;
+}
+
+#rating_search{
+    visibility: visible;
+}
+
+#genre_search{
+    visibility: visible;
+}
+
+.scrollable_menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.go{
+    position: relative;
+    display: block;
+    text-align: center;
+    margin-top: 20%;
+    margin-left: 25%;
+    margin-right: 40%;
+    margin-bottom: 40%;
+    background-color: rgba(176, 211, 231, 0.822);
+}
+
+.soutput{
+    position: relative;
+    width: 79%;
+    float: left;
+    margin-bottom: 2%;
+    background-color: #212529;
+    height: 200px;
+}
+
+.simage{
+    margin-top: 25px;
+    margin-left: 5%;
+    height: 140px;
+    width: 100px;
+    float: left;
+
+}
+
+.sdetails{
+    color: white;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+    position: relative;
+    display: inline;
+    margin-left: 1%;
+}
+
+.details1{
+    width: wrap-content;
+    float: left;
+    overflow-wrap:break-word;
+    display: block;
+}
+
+#tag{
+    overflow-wrap: inherit;
+    text-align: center;
+}
+
+.details2{
+    display: block;
+    width: 30%;
+    float: left;
+    margin-left: 2%;
+    margin-top: 1%;
+    text-align: left;
+    height: 200px;
+}
+
+.details3{
+    width: 20%;
+    float: left;
+    height: 200px;
+}
+
+.similartitle{
+    color: white;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-top: 15%;
+}
+
+.show_genre{
+    height: 10%;
+    width: 40%;
+    float: left;
+    margin-left: 10%;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+
+  .content{
+      margin-top: 3%;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-large;
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    padding-bottom: 2%;
+  }
+  
+  /* The Close Button */
+  .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  /* Close button on hover */
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+  }
+  
+  @keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+  }
+
+.bestBooks{
+    position: relative;
+    float: left;
+    width: 60%;
+    left: 7%;
+    height: 100%;
+}
+
+.sign_up{
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 60%;
+    margin-left: 2%;
+    text-align: center;
+    color: #212529;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+.signup-image{
+    position: relative;
+    margin: 5px;
+    height: 250px;
+    width: 180px;
+
+}
+
+.overlay {
+    position: absolute;
+    top: 5px;
+    bottom: 0;
+    left: 5px;
+    right: 0;
+    height: 250px;
+    width: 180px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #343a40;
+  }
+
+.signup-image:hover .overlay {
+    opacity: 1;
+}
+
+.text{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 100px;
+    font-size: x-large;
+    color: #FFD600;
+    text-align: center;
+    cursor: pointer
+    
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+.message{
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: xx-large; 
+    font-weight: bold;
+    color: #3e444b;
+    width: 40%;
+    float: left;
+    text-align: center;
+    border:#3e444b;
+    border-style: groove;
+    border-width: 10px;
+    margin-left: 10%;  
+}
+
+
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+@media (min-width: 576px) {
+    .carousel-item {
+        margin-right: 0;
+    }
+    /* show 2 items */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* MD */
+@media (min-width: 768px) {
+    /* show 3rd of 3 item slide */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* LG */
+@media (min-width: 991px) {
+    /* show 4th item */
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    /* Show 5th slide on lg if col-lg-3 */
+    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}

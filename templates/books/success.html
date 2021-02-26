@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Books</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/css/mystyle.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" style="margin-top: -10px;" href="/books/index">Books</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Genres
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <form action="/books/genres/" method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input class="dropdown-item item" type="submit" name="item" value="action">
+                        <input class="dropdown-item item" type="submit" name="item" value="adventure">
+                        <input class="dropdown-item item" type="submit" name="item" value="biography">
+                        <input class="dropdown-item item" type="submit" name="item" value="children">
+                        <input class="dropdown-item item" type="submit" name="item" value="classics">
+                        <div class="dropdown-divider"></div>
+                        <input class="dropdown-item item" type="submit" name="item" value="comics">
+                        <input class="dropdown-item item" type="submit" name="item" value="contemporary">
+                        <input class="dropdown-item item" type="submit" name="item" value="crime">
+                        <input class="dropdown-item item" type="submit" name="item" value="drama">
+                        <input class="dropdown-item item" type="submit" name="item" value="fantasy">
+                        <div class="dropdown-divider"></div>
+                        <input class="dropdown-item item" type="submit" name="item" value="fiction">
+                        <input class="dropdown-item item" type="submit" name="item" value="gothic">
+                        <input class="dropdown-item item" type="submit" name="item" value="historical fiction">
+                        <input class="dropdown-item item" type="submit" name="item" value="horror">
+                        <input class="dropdown-item item" type="submit" name="item" value="humor">
+                        <div class="dropdown-divider"></div>
+                        <input class="dropdown-item item" type="submit" name="item" value="mythology">
+                        <input class="dropdown-item item" type="submit" name="item" value="mystery">
+                        <input class="dropdown-item item" type="submit" name="item" value="non-fiction">
+                        <input class="dropdown-item item" type="submit" name="item" value="poetry">
+                        <input class="dropdown-item item" type="submit" name="item" value="realistic-fiction">
+                        <div class="dropdown-divider"></div>
+                        <input class="dropdown-item item" type="submit" name="item" value="romance">
+                        <input class="dropdown-item item" type="submit" name="item" value="science">
+                        <input class="dropdown-item item" type="submit" name="item" value="science-fiction">
+                        <input class="dropdown-item item" type="submit" name="item" value="short stories">
+                        <div class="dropdown-divider"></div>
+                        <input class="dropdown-item item" type="submit" name="item" value="suspense">
+                        <input class="dropdown-item item" type="submit" name="item" value="thriller">
+                        <input class="dropdown-item item" type="submit" name="item" value="young adult">
+                        <div class="dropdown-divider"></div>
+                    </form>
+                </div>
+                </li>
+                <li class="nav-item">
+                    <!-- Button to open the modal login form -->
+                    <label class="nav-link" style="background-color: #343a40!important;" onclick="document.getElementById('id01').style.display='block'">Login/Signup</label>
+
+                    <!-- The Modal -->
+                    <div id="id01" class="modal">
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                    class="close" title="Close Modal">&times;</span>
+
+                    <!-- Modal Content -->
+                    <form class="modal-content animate" method="POST" action="/books/user_index/">
+                        {% csrf_token %}
+                        {{ form }}
+
+                        <div class="content">
+                        <label for="username"><b>Username</b></label><br>
+                        <input type="text" placeholder="Enter Username" name="username" required><br>
+
+                        <label for="password" style="margin-top:2%;"><b>Password</b></label><br>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+                        <br>
+                        <button type="submit" style="margin-top:3%;">Login</button>
+                        </div>
+                        <br>
+                        <span class="form-group content"></span>
+                            <label>Don't you have an account? <br> Sign up <a href="/books/signup/"> here</a></label>
+                            <button type="button" style="width: fit-content; margin-left: 5%;" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                        </span>
+                    </form>
+                    </div>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0" action="/books/result/" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by title" name="title" id="title_search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            </div>
+        </nav>
+        <div>
+            {% if message ==  'You sign up successfully' %}
+                <span style="font-family: 'Courier New', Courier, monospace; font-size: x-large; width: 60%;float: left;margin-top: 5%;text-align: center;">
+                    {{ message }}<br>
+                    Now you can login!
+                     <!-- Button to open the modal login form -->
+                     <label class="nav-link" style="background-color: rgba(176, 211, 231, 0.822); width: 150px; margin-left: 40%; margin-top: 5%;" onclick="document.getElementById('id01').style.display='block'">Here</label>
+
+                     <!-- The Modal -->
+                     <div id="id01" class="modal">
+                     <span onclick="document.getElementById('id01').style.display='none'"
+                     class="close" title="Close Modal">&times;</span>
+ 
+                     <!-- Modal Content -->
+                     <form class="modal-content animate" style="background-color: rgba(176, 211, 231, 0.822);" method="POST" action="/books/user_index/">
+                         {% csrf_token %}
+                         {{ form }}
+ 
+                         <div class="content">
+                         <label for="username"><b>Username</b></label><br>
+                         <input type="text" placeholder="Enter Username" name="username" required><br>
+ 
+                         <label for="password" style="margin-top:2%;"><b>Password</b></label><br>
+                         <input type="password" placeholder="Enter Password" name="password" required>
+                         <br>
+                         <button type="submit" style="margin-top:3%;">Login</button>
+                         </div>
+                         <br>
+                         <span class="form-group content"></span>
+                             <label>Don't you have an account? <br> Sign up <a href="/books/signup/"> here</a></label>
+                             <button type="button" style="width: fit-content; margin-left: 5%;" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                         </span>
+                     </form>
+                     </div>
+                </span>
+            {% elif message == 'The passwords are different,try again' or message == 'The username already exists, try another one!' %}
+                <span style="font-family: 'Courier New', Courier, monospace; font-size: x-large; width: 60%;float: left;margin-top: 5%;text-align: center;">
+                    {{ message }}<br>
+                    <a href="/books/signup"> Sign up</a>
+                </span>
+            {% else %}
+
+                <span style="font-family: 'Courier New', Courier, monospace; font-size: x-large; width: 60%; float: left; margin-top: 5%; margin-left: 10%; text-align: center;">
+                    {{ message }}
+                    <input type="button" style= "margin-top: 10%; margin-left: 33%;" class="nav-link" value="Login/Signup" onclick="document.getElementById('id01').style.display='block'">
+                </span>
+
+                <!-- The Modal -->
+                <div id="id01" class="modal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                <!-- Modal Content -->
+                <form class="modal-content animate" method="POST" action="/books/user_index/">
+                    {% csrf_token %}
+                    {{ form }}
+
+                        <div class="content">
+                        <label for="username"><b>Username</b></label><br>
+                        <input type="text" placeholder="Enter Username" name="username" required><br>
+
+                        <label for="password" style="margin-top:2%;"><b>Password</b></label><br>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+                        <br>
+                        <button type="submit" style="margin-top:3%;">Login</button>
+                        </div>
+                        <br>
+                        <span class="form-group content"></span>
+                            <label>Don't you have an account? <br> Sign up <a href="/books/signup/"> here</a></label>
+                            <button type="button" style="width: fit-content; margin-left: 5%;" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                        </span>
+                </form>   
+            {% endif %}
+
+        </div>
+
+
+    </body>
+</html>
